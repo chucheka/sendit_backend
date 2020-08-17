@@ -71,7 +71,7 @@ public class CustomGlobalExceptionHandler{
 	
 
 	@ResponseStatus(HttpStatus.NOT_FOUND)
-	@ExceptionHandler
+	@ExceptionHandler(ResourceNotFoundException.class)
 	public ResponseEntity<ErrorResponse> handleException(ResourceNotFoundException exc){
 	ErrorResponse error = new ErrorResponse();
 		
@@ -81,7 +81,7 @@ public class CustomGlobalExceptionHandler{
 	}
 	
 	@ResponseStatus(HttpStatus.NOT_FOUND)
-	@ExceptionHandler
+	@ExceptionHandler(UsernameNotFoundException.class)
 	public ResponseEntity<ErrorResponse> handleException(UsernameNotFoundException exc){
 	ErrorResponse error = new ErrorResponse();
 		
@@ -91,7 +91,7 @@ public class CustomGlobalExceptionHandler{
 	}
 	
 	@ResponseStatus(HttpStatus.BAD_REQUEST)
-	@ExceptionHandler
+	@ExceptionHandler(BadRequestException.class)
 	public ResponseEntity<ErrorResponse> handleException(BadRequestException exc){
 		ErrorResponse error = new ErrorResponse();
 		
@@ -102,7 +102,7 @@ public class CustomGlobalExceptionHandler{
 	}
 	
 	@ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-	@ExceptionHandler
+	@ExceptionHandler(AppException.class)
 	public ResponseEntity<ErrorResponse> handleException(AppException exc){
 		ErrorResponse error = new ErrorResponse();
 		
@@ -110,7 +110,8 @@ public class CustomGlobalExceptionHandler{
 		error.setMessage(exc.getLocalizedMessage());
 		return new ResponseEntity<>(error,HttpStatus.INTERNAL_SERVER_ERROR);
 	}
-	@ExceptionHandler
+	@ResponseStatus(HttpStatus.BAD_REQUEST)
+	@ExceptionHandler(ActionNotAllowedException.class)
 	public ResponseEntity<ErrorResponse> handleException(ActionNotAllowedException exc){
 		ErrorResponse error = new ErrorResponse();
 		
@@ -120,7 +121,7 @@ public class CustomGlobalExceptionHandler{
 		return new ResponseEntity<>(error,HttpStatus.EXPECTATION_FAILED);
 	}
 
-	@ExceptionHandler
+	@ExceptionHandler(SendFailedException.class)
 	public ResponseEntity<ErrorResponse> handleException(SendFailedException exc){
 		ErrorResponse error = new ErrorResponse();
 		
@@ -129,7 +130,7 @@ public class CustomGlobalExceptionHandler{
 		return new ResponseEntity<>(error,HttpStatus.BAD_REQUEST);
 	}
 	@ResponseStatus(HttpStatus.BAD_REQUEST)
-	@ExceptionHandler()
+	@ExceptionHandler(FileUploadException.class)
 	public ResponseEntity<ErrorResponse> handleFileUploadException(FileUploadException ex) {
 	
 		ErrorResponse error = new ErrorResponse();
