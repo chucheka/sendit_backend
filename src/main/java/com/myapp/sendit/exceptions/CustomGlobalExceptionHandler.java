@@ -72,7 +72,7 @@ public class CustomGlobalExceptionHandler{
 
 	@ResponseStatus(HttpStatus.NOT_FOUND)
 	@ExceptionHandler(ResourceNotFoundException.class)
-	public ResponseEntity<ErrorResponse> handleException(ResourceNotFoundException exc){
+	public ResponseEntity<ErrorResponse> handleResourceNotFoundException(ResourceNotFoundException exc){
 	ErrorResponse error = new ErrorResponse();
 		
 		error.setStatus(HttpStatus.NOT_FOUND.value());
@@ -82,7 +82,7 @@ public class CustomGlobalExceptionHandler{
 	
 	@ResponseStatus(HttpStatus.NOT_FOUND)
 	@ExceptionHandler(UsernameNotFoundException.class)
-	public ResponseEntity<ErrorResponse> handleException(UsernameNotFoundException exc){
+	public ResponseEntity<ErrorResponse> handleUsernameNotFoundException(UsernameNotFoundException exc){
 	ErrorResponse error = new ErrorResponse();
 		
 		error.setStatus(HttpStatus.NOT_FOUND.value());
@@ -92,7 +92,7 @@ public class CustomGlobalExceptionHandler{
 	
 	@ResponseStatus(HttpStatus.BAD_REQUEST)
 	@ExceptionHandler(BadRequestException.class)
-	public ResponseEntity<ErrorResponse> handleException(BadRequestException exc){
+	public ResponseEntity<ErrorResponse> handleBadRequestException(BadRequestException exc){
 		ErrorResponse error = new ErrorResponse();
 		
 		
@@ -103,7 +103,7 @@ public class CustomGlobalExceptionHandler{
 	
 	@ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
 	@ExceptionHandler(AppException.class)
-	public ResponseEntity<ErrorResponse> handleException(AppException exc){
+	public ResponseEntity<ErrorResponse> handleAppException(AppException exc){
 		ErrorResponse error = new ErrorResponse();
 		
 		error.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
@@ -112,7 +112,7 @@ public class CustomGlobalExceptionHandler{
 	}
 	@ResponseStatus(HttpStatus.BAD_REQUEST)
 	@ExceptionHandler(ActionNotAllowedException.class)
-	public ResponseEntity<ErrorResponse> handleException(ActionNotAllowedException exc){
+	public ResponseEntity<ErrorResponse> handleActionNotAllowedException(ActionNotAllowedException exc){
 		ErrorResponse error = new ErrorResponse();
 		
 		
@@ -122,7 +122,7 @@ public class CustomGlobalExceptionHandler{
 	}
 
 	@ExceptionHandler(SendFailedException.class)
-	public ResponseEntity<ErrorResponse> handleException(SendFailedException exc){
+	public ResponseEntity<ErrorResponse> handleSendFailedException(SendFailedException exc){
 		ErrorResponse error = new ErrorResponse();
 		
 		error.setStatus(HttpStatus.BAD_REQUEST.value());
