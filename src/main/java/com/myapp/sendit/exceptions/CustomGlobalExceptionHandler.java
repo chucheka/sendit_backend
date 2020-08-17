@@ -120,14 +120,14 @@ public class CustomGlobalExceptionHandler{
 		return new ResponseEntity<>(error,HttpStatus.EXPECTATION_FAILED);
 	}
 
-	@ExceptionHandler
-	public ResponseEntity<ErrorResponse> handleException(SendFailedException exc){
-		ErrorResponse error = new ErrorResponse();
-		
-		error.setStatus(HttpStatus.BAD_REQUEST.value());
-		error.setMessage(exc.getMessage());
-		return new ResponseEntity<>(error,HttpStatus.BAD_REQUEST);
-	}
+//	@ExceptionHandler
+//	public ResponseEntity<ErrorResponse> handleException(SendFailedException exc){
+//		ErrorResponse error = new ErrorResponse();
+//		
+//		error.setStatus(HttpStatus.BAD_REQUEST.value());
+//		error.setMessage(exc.getMessage());
+//		return new ResponseEntity<>(error,HttpStatus.BAD_REQUEST);
+//	}
 	@ResponseStatus(HttpStatus.BAD_REQUEST)
 	@ExceptionHandler()
 	public ResponseEntity<ErrorResponse> handleFileUploadException(FileUploadException ex) {
