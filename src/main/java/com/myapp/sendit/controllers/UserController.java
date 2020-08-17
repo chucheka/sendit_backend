@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.myapp.sendit.dto.ResetPasswordRequest;
 import com.myapp.sendit.dto.SetNewPasswordPayload;
-import com.myapp.sendit.exception.ResourceNotFoundException;
+import com.myapp.sendit.exceptions.ResourceNotFoundException;
 import com.myapp.sendit.model.User;
 import com.myapp.sendit.payload.ApiResponse;
 import com.myapp.sendit.repository.UserRepository;

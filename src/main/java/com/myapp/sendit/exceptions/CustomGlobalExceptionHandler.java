@@ -1,4 +1,4 @@
-package com.myapp.sendit.exception;
+package com.myapp.sendit.exceptions;
 
 
 
@@ -22,6 +22,9 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.context.request.WebRequest;
 
 import com.myapp.sendit.payload.ErrorResponse;
+
+
+
 
 
 @ControllerAdvice

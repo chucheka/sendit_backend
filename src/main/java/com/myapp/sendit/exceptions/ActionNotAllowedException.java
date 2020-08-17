@@ -1,4 +1,4 @@
-package com.myapp.sendit.exception;
+package com.myapp.sendit.exceptions;
 
 public class ActionNotAllowedException extends RuntimeException {
 

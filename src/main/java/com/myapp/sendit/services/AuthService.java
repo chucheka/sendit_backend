@@ -21,7 +21,7 @@ import org.springframework.stereotype.Service;
 import com.myapp.sendit.dto.BecomeRiderDto;
 import com.myapp.sendit.dto.LoginRequest;
 import com.myapp.sendit.dto.SignUpRequest;
-import com.myapp.sendit.exception.ResourceNotFoundException;
+import com.myapp.sendit.exceptions.ResourceNotFoundException;
 import com.myapp.sendit.model.Customer;
 import com.myapp.sendit.model.Rider;
 import com.myapp.sendit.model.Role;
@@ -151,7 +151,7 @@ public class AuthService {
 					break;
 				default:
 					Role userRole = roleRepository.findByName(RoleName.ROLE_USER)
-							.orElseThrow(() -> new ResourceNotFoundException("User Role not set."));
+							.orElseThrow(() -> new com.myapp.sendit.exceptions.ResourceNotFoundException("User Role not set."));
 					roles.add(userRole);
 				}
 			});
@@ -238,7 +238,7 @@ public class AuthService {
         
 		Set<Role> roles = new HashSet<>();
 			Role riderRole = roleRepository.findByName(RoleName.ROLE_RIDER)
-					.orElseThrow(() -> new ResourceNotFoundException("Rider Role not set."));
+					.orElseThrow(() -> new com.myapp.sendit.exceptions.ResourceNotFoundException("Rider Role not set."));
 			roles.add(riderRole);
 		
 		rider.getPhoneNumbers().addAll(strPhoneNumbers);

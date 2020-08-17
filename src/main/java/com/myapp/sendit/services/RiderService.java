@@ -5,8 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.myapp.sendit.exception.BadRequestException;
-import com.myapp.sendit.exception.ResourceNotFoundException;
+import com.myapp.sendit.exceptions.BadRequestException;
+import com.myapp.sendit.exceptions.ResourceNotFoundException;
 import com.myapp.sendit.model.Parcel;
 import com.myapp.sendit.model.Rider;
 import com.myapp.sendit.repository.ParcelRepository;
