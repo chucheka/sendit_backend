@@ -40,5 +40,5 @@ public class RiderController {
 		ApiResponse response = new ApiResponse(HttpStatus.OK.value(),"All matched riders fetched!",riderService.searchForRider());
 		return new ResponseEntity<ApiResponse>(response,HttpStatus.OK);
 	}
-
 }
+	

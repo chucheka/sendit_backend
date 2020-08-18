@@ -65,39 +65,34 @@ public class UserController {
 		String token = UUID.randomUUID().toString();
 		userService.createPasswordResetTokenForUser(user.get(), token);
 		String appUrl = request.getScheme()+"://"+request.getServerName()+":"+request.getLocalPort();
-		String link = appUrl + "/users/changePassword?token=" + token;
+		String link = appUrl + "/users/changePasswordLink?token=" + token;
 		String emailMsg = "Click the link below to reset password \n" + link;
 		Map<String, String> resetLink = new HashMap<>();
 	
 		resetLink.put("link",link);
-		String message = "Reset Link Sent!!";
+		String message = "Reset link sent to your email!";
 		emailService.sendEmail(user.get().getEmail(),"Reset Password",emailMsg);
 		return new ApiResponse(HttpStatus.OK.value(),message);
 	}
 	
 	@ResponseStatus(HttpStatus.OK)
-	@GetMapping("/changePassword")
+	@GetMapping("/changePasswordLink")
 	public ApiResponse showChangePasswordPage(HttpServletRequest request,@RequestParam("token") String token) {
-		String result = utilities.validatePasswordResetToken(token);
-	if(result == null) {
-		throw new ResourceNotFoundException("Token expired or invalid.\n Request for a fresh password reset link");
-		} else {
-			
+		String tokenEmail = utilities.validatePasswordResetToken(token);
+			utilities.deletePasswordResetToken(token);
+			// ***IMPLEMENT A REDIRECT TO THE FRONTEND URL *X*
 			String appUrl = request.getScheme()+"://"+request.getServerName()+":"+request.getLocalPort();
 			String link = appUrl + "/users/resetPassword";
 			
 			Map<String, String> resetLink = new HashMap<>();
 			resetLink.put("link",link);
-			resetLink.put("email",result);
+			resetLink.put("email",tokenEmail);
 			String message = "Click the link below to update password";
-			
-			utilities.deletePasswordResetToken(token);
 			return new ApiResponse(HttpStatus.OK.value(),message,resetLink);
-		}
 	}
 	
 	@ResponseStatus(HttpStatus.OK)
-	@PostMapping("/savePassword")
+	@PostMapping("/createPassword")
 	public ApiResponse saveNewPassword(@Valid @RequestBody SetNewPasswordPayload payload) {
 		Optional<User> user = userRepository.findByEmail(payload.getEmail());
 		utilities.changeUserPassword(user.get(), payload.getNewPassword());

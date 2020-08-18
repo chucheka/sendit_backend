@@ -17,10 +17,6 @@ import com.myapp.sendit.dto.LoginRequest;
 import com.myapp.sendit.dto.SignUpRequest;
 import com.myapp.sendit.services.AuthService;
 
-
-
-
-
 @RestController
 @RequestMapping("/api/v1/auth")
 public class AuthController{
@@ -30,9 +26,8 @@ public class AuthController{
     @PostMapping("/signin")
     public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
     	return authService.authenticateUser(loginRequest);
-    	    }
-
-    @PostMapping("/signup")
+    }
+    @PostMapping("/admin")
     public ResponseEntity<?> registerUser(@Valid @RequestBody SignUpRequest signUpRequest) {
     return authService.registerUser(signUpRequest);
     }

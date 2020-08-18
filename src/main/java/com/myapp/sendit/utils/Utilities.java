@@ -9,6 +9,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.myapp.sendit.exceptions.ResourceNotFoundException;
 import com.myapp.sendit.model.PasswordResetToken;
 import com.myapp.sendit.model.User;
 import com.myapp.sendit.repository.PasswordTokenRepository;
@@ -31,9 +32,7 @@ public class Utilities {
 
 		public String validatePasswordResetToken(String token) {
 	
-			final Optional<PasswordResetToken> passToken = passwordTokenRepository.findByToken(token);
-			
-			String str = !passToken.isPresent()?null:passToken.get().getUser().getEmail();
+			final String str = passwordTokenRepository.findByToken(token).map(t -> t.getUser().getEmail()).orElseThrow(()->new ResourceNotFoundException("Token expired or invalid.\n Request for a fresh password reset link"));			
 			
 			return str;
 		
@@ -48,17 +47,13 @@ public class Utilities {
 			}
 			
 		}
-//		
-//		private boolean isTokenExpired(PasswordResetToken passToken) {
-//			final Calendar cal = Calendar.getInstance();
-//			return passToken.getExpiryDate().before(cal.getTime());
-//			}
-		
+
 		public void changeUserPassword(User user, String password) {
 			BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
 			user.setPassword(bCryptPasswordEncoder.encode(password));
 			userRepository.save(user);
 			}
+
 		public List<String> validateAndUploadFile(MultipartFile file) {
 			List<String> errors  = new ArrayList<>();
 			final long FILE_SIZE_BYTES = 204800;
