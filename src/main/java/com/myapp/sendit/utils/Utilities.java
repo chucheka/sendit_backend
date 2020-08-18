@@ -33,8 +33,7 @@ public class Utilities {
 	
 			final Optional<PasswordResetToken> passToken = passwordTokenRepository.findByToken(token);
 			
-			System.out.println(passToken.get().getUser());
-			String str = passToken.isEmpty()?null:passToken.get().getUser().getEmail();
+			String str = !passToken.isPresent()?null:passToken.get().getUser().getEmail();
 			
 			return str;
 		
@@ -44,7 +43,7 @@ public class Utilities {
 			
 			Optional<PasswordResetToken> passToken = passwordTokenRepository.findByToken(token);
 			
-			if(!passToken.isEmpty()) {
+			if(passToken.isPresent()) {
 				passwordTokenRepository.delete(passToken.get());
 			}
 			

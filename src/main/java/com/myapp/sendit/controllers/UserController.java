@@ -58,7 +58,7 @@ public class UserController {
 	@PostMapping("/resetPassword")
 	public ApiResponse resetPassword(HttpServletRequest request,@Valid @RequestBody ResetPasswordRequest resetPasswordRequest) {
 		Optional<User> user = userRepository.findByEmail(resetPasswordRequest.getEmail());
-		if (user.isEmpty()) {
+		if (!user.isPresent()) {
 			throw new ResourceNotFoundException("Email does not exist");
 			}
 		
