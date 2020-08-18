@@ -6,8 +6,10 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import com.myapp.sendit.interfaces.PasswordMatches;
 
-//@PasswordMatches(message="Password fields must match")
+
+@PasswordMatches(message="Password fields must match", confirmPassword = "confirmPassword", password = "password")
 public class BecomeRiderDto {
 
 	@NotBlank
