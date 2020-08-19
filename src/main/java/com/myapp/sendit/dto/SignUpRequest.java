@@ -6,15 +6,10 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
-import com.myapp.sendit.interfaces.FieldsValueMatch;
+import com.myapp.sendit.interfaces.PasswordMatches;
 
-@FieldsValueMatch.List({ 
-    @FieldsValueMatch(
-      field = "password", 
-      fieldMatch = "confirmPassword", 
-      message = "Passwords do not match!"
-    )
-})
+
+@PasswordMatches(message = "Passwords do not match!")
 public class SignUpRequest {
 
     @NotBlank
