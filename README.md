@@ -8,7 +8,7 @@ Development
 https://github.com/ucheka22/senditapp.git
 
 ## API Documentation
-https://documenter.getpostman.com/view/11203891/SzfAz77C?version=latest
+https://documenter.getpostman.com/view/11203891/SzfAz77C
 
 ## UI On gh-pages
 Not Ready Yet..
@@ -38,7 +38,7 @@ e.g git clone https://github.com/ucheka22/senditapp.git
 4. Install postman to test all endpoints on port 8080.
 
 ### BaseURI
-Use the baseURI  ```https://mysenditapp.herokuapp.com/api/v1```.
+Use the baseURI  ```https://sendit-backend-v1.herokuapp.com/api/v1```.
 
 ### API End Points Test Using Postman
 
