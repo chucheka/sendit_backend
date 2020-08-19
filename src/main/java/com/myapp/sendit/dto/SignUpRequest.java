@@ -8,8 +8,8 @@ import javax.validation.constraints.Size;
 
 import com.myapp.sendit.interfaces.PasswordMatches;
 
+@PasswordMatches.List({@PasswordMatches(message="Password fields must match", confirmPassword = "confirmPassword", password = "password")})
 
-@PasswordMatches(message="Password fields must match", confirmPassword = "confirmPassword", password = "password")
 public class SignUpRequest {
 
     @NotBlank

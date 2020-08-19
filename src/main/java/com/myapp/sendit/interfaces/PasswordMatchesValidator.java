@@ -11,6 +11,7 @@ public class PasswordMatchesValidator implements ConstraintValidator<PasswordMat
   private String confirmPassword;
 
   public void initialize(PasswordMatches constraintAnnotation) {
+	  
       this.password = constraintAnnotation.password();
       this.confirmPassword = constraintAnnotation.confirmPassword();
   }
