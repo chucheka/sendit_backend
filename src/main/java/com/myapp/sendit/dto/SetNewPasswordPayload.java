@@ -4,9 +4,17 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
+import com.myapp.sendit.interfaces.FieldsValueMatch;
 import com.myapp.sendit.interfaces.PasswordMatches;
 
-@PasswordMatches.List({@PasswordMatches(confirmPassword = "confirmNewPassword", password = "newPassword",message = "New Passwords must match")})
+
+@FieldsValueMatch.List({ 
+    @FieldsValueMatch(
+      field = "newPassword", 
+      fieldMatch = "confirmNewPassword", 
+      message = "New Passwords do not match!"
+    )
+})
 public class SetNewPasswordPayload {
 	@NotBlank
 	@Size(max = 50)
