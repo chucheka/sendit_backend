@@ -6,7 +6,7 @@ import javax.validation.constraints.Size;
 
 import com.myapp.sendit.interfaces.PasswordMatches;
 
-@PasswordMatches(confirmPassword = "confirmPassword", password = "password",message = "New Passwords must match")
+@PasswordMatches.List({@PasswordMatches(confirmPassword = "confirmNewPassword", password = "newPassword",message = "New Passwords must match")})
 public class SetNewPasswordPayload {
 	@NotBlank
 	@Size(max = 50)
