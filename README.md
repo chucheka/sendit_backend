@@ -32,7 +32,7 @@ Not Ready Yet..
 ### Installation
 1. Clone this repository into your local machine:
 ```
-e.g git clone https://github.com/ucheka22/senditapp.git
+e.g https://github.com/ucheka22/sendit_backend.git
 ```
 
 4. Install postman to test all endpoints on port 8080.
